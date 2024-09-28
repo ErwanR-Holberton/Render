@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit
+from flask_cors import CORS
 import random
 import string
 
 app = Flask(__name__)
+CORS(app)
 app.config['SECRET_KEY'] = 'your_secret_key'
 socketio = SocketIO(app)
 
