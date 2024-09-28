@@ -19,7 +19,7 @@
     <button onclick="sendMessage()">Send</button>
 
     <script>
-        io.connect(window.location.origin);
+        var socket = io.connect(window.location.origin);
         var userId = '';
 
         // Receive user ID assigned by the server
