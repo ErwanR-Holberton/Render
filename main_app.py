@@ -24,6 +24,7 @@ def index():
 @socketio.on('connect')
 def handle_connect():
     user_id = generate_user_id()
+    print("someone connected", user_id)
     users[request.sid] = user_id
     emit('user_id', user_id)
 
@@ -31,10 +32,12 @@ def handle_connect():
 def handle_message(msg):
     user_id = users.get(request.sid, 'Unknown')
     formatted_message = f'User {user_id}: {msg}'
+    print(f'Message received: {formatted_message}')  # Debugging log
     send(formatted_message, broadcast=True)
 
 @socketio.on('disconnect')
 def handle_disconnect():
+    print("someone connected", request.sid)
     if request.sid in users:
         del users[request.sid]
 
