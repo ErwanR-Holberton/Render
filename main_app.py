@@ -18,6 +18,7 @@ def generate_user_id():
 
 @app.route('/')
 def index():
+    print("test")
     return render_template('index.html')
 
 @socketio.on('connect')
