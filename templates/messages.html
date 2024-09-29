@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .message-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .message {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .message p {
+            margin: 0;
+        }
+        .message .username {
+            font-weight: bold;
+        }
+        .message .date {
+            color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message-container">
+        <h1>All Messages</h1>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    <p class="username">{{ message.username }}</p>
+                    <p>{{ message.content }}</p>
+                    <p class="date">{{ message.date }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No messages found.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
