@@ -12,16 +12,16 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 socketio = SocketIO(app)
 
 def get_db_connection():
+    print(os.getenv('MYSQLHOST'),
+        user=os.getenv('MYSQLUSER'),
+        password=os.getenv('MYSQLPASSWORD'),
+        database=os.getenv('MYSQL_DATABASE'))
     conn = mysql.connector.connect(
         host=os.getenv('MYSQLHOST'),
         user=os.getenv('MYSQLUSER'),
         password=os.getenv('MYSQLPASSWORD'),
         database=os.getenv('MYSQL_DATABASE')
     )
-    print(os.getenv('MYSQLHOST'),
-        user=os.getenv('MYSQLUSER'),
-        password=os.getenv('MYSQLPASSWORD'),
-        database=os.getenv('MYSQL_DATABASE'))
     return conn
 
 def add_message(username, content):
