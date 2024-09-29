@@ -4,7 +4,7 @@ from flask_cors import CORS
 import random
 import string, os
 import mysql.connector
-from datetime import date
+from datetime import datetime
 from urllib.parse import urlparse
 
 app = Flask(__name__)
@@ -54,7 +54,7 @@ def get_db_connection():
     return conn
 
 def add_message(username, content):
-    message_date = date.now()  # Use current date
+    message_date = datetime.now()  # Use current date
     
     # Insert the message into the database
     conn = get_db_connection()
