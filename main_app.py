@@ -24,7 +24,13 @@ db_variables = {
 
 def get_db_connection():
     print(db_variables)
-    conn = mysql.connector.connect(url=db_variables['MYSQL_URL'])
+    conn = mysql.connector.connect(
+            host=db_variables['MYSQLHOST'],
+            user=db_variables['MYSQLUSER'],
+            password=db_variables['MYSQLPASSWORD'],
+            port=db_variables['MYSQLPORT'],
+            database=db_variables['MYSQL_DATABASE']
+        )
     return conn
 
 def add_message(username, content):
