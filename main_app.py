@@ -18,6 +18,10 @@ def get_db_connection():
         password=os.getenv('MYSQLPASSWORD'),
         database=os.getenv('MYSQL_DATABASE')
     )
+    print(getenv('MYSQLHOST'),
+        user=os.getenv('MYSQLUSER'),
+        password=os.getenv('MYSQLPASSWORD'),
+        database=os.getenv('MYSQL_DATABASE'))
     return conn
 
 def add_message(username, content):
