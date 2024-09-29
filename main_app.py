@@ -13,9 +13,9 @@ socketio = SocketIO(app)
 
 def get_db_connection():
     print(os.getenv('MYSQLHOST'),
-        user=os.getenv('MYSQLUSER'),
-        password=os.getenv('MYSQLPASSWORD'),
-        database=os.getenv('MYSQL_DATABASE'))
+        os.getenv('MYSQLUSER'),
+        os.getenv('MYSQLPASSWORD'),
+        os.getenv('MYSQL_DATABASE'))
     conn = mysql.connector.connect(
         host=os.getenv('MYSQLHOST'),
         user=os.getenv('MYSQLUSER'),
