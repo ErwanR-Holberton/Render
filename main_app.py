@@ -5,11 +5,24 @@ import random
 import string, os
 import mysql.connector
 from datetime import date
+from urllib.parse import urlparse
 
 app = Flask(__name__)
 CORS(app)
 app.config['SECRET_KEY'] = 'your_secret_key'
 socketio = SocketIO(app)
+
+mysql_url = os.getenv('MYSQL_URL')
+
+# Parse the MySQL URL
+parsed_url = urlparse(mysql_url)
+
+# Extract connection parameters
+host = parsed_url.hostname
+user = parsed_url.username
+password = parsed_url.password
+port = parsed_url.port
+database = parsed_url.path[1:]
 
 db_variables = {
     'MYSQLHOST': os.getenv('MYSQLHOST'),
@@ -24,14 +37,20 @@ db_variables = {
 }
 print("url:", db_variables['NEW_URL'])
 
+"""host=db_variables['MYSQLHOST'],
+user=db_variables['MYSQLUSER'],
+password=db_variables['MYSQLPASSWORD'],
+port=db_variables['MYSQLPORT'],
+database=db_variables['MYSQL_DATABASE']"""
 def get_db_connection():
     print(db_variables)
     conn = mysql.connector.connect(
-            host=db_variables['MYSQLHOST'],
-            user=db_variables['MYSQLUSER'],
-            password=db_variables['MYSQLPASSWORD'],
-            port=db_variables['MYSQLPORT'],
-            database=db_variables['MYSQL_DATABASE']
+            
+            host=host,
+            user=user,
+            password=password,
+            port=port,
+            database=database
         )
     return conn
 
