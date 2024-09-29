@@ -12,24 +12,19 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 socketio = SocketIO(app)
 
 db_variables = {
-    MYSQLHOST=os.getenv('MYSQLHOST'),
-    MYSQLPASSWORD=os.getenv('MYSQLPASSWORD'),
-    MYSQLPORT=os.getenv('MYSQLPORT'),
-    MYSQLUSER=os.getenv('MYSQLUSER'),
-    MYSQL_DATABASE=os.getenv('MYSQL_DATABASE'),
-    MYSQL_PUBLIC_URL=os.getenv('MYSQL_PUBLIC_URL'),
-    MYSQL_ROOT_PASSWORD=os.getenv('MYSQL_ROOT_PASSWORD'),
-    MYSQL_URL=os.getenv('MYSQL_URL')
+    'MYSQLHOST': os.getenv('MYSQLHOST'),
+    'MYSQLPASSWORD': os.getenv('MYSQLPASSWORD'),
+    'MYSQLPORT': os.getenv('MYSQLPORT'),
+    'MYSQLUSER': os.getenv('MYSQLUSER'),
+    'MYSQL_DATABASE': os.getenv('MYSQL_DATABASE'),
+    'MYSQL_PUBLIC_URL': os.getenv('MYSQL_PUBLIC_URL'),
+    'MYSQL_ROOT_PASSWORD': os.getenv('MYSQL_ROOT_PASSWORD'),
+    'MYSQL_URL': os.getenv('MYSQL_URL')
 }
 
 def get_db_connection():
     print(db_variables)
-    conn = mysql.connector.connect(
-        host=os.getenv('MYSQLHOST'),
-        user=os.getenv('MYSQLUSER'),
-        password=os.getenv('MYSQLPASSWORD'),
-        database=os.getenv('MYSQL_DATABASE')
-    )
+    conn = mysql.connector.connect(url=db_variables['MYSQL_URL'])
     return conn
 
 def add_message(username, content):
