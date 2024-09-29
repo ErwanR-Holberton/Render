@@ -11,11 +11,19 @@ CORS(app)
 app.config['SECRET_KEY'] = 'your_secret_key'
 socketio = SocketIO(app)
 
+db_variables = {
+    MYSQLHOST=os.getenv('MYSQLHOST'),
+    MYSQLPASSWORD=os.getenv('MYSQLPASSWORD'),
+    MYSQLPORT=os.getenv('MYSQLPORT'),
+    MYSQLUSER=os.getenv('MYSQLUSER'),
+    MYSQL_DATABASE=os.getenv('MYSQL_DATABASE'),
+    MYSQL_PUBLIC_URL=os.getenv('MYSQL_PUBLIC_URL'),
+    MYSQL_ROOT_PASSWORD=os.getenv('MYSQL_ROOT_PASSWORD'),
+    MYSQL_URL=os.getenv('MYSQL_URL')
+}
+
 def get_db_connection():
-    print(os.getenv('MYSQLHOST'),
-        os.getenv('MYSQLUSER'),
-        os.getenv('MYSQLPASSWORD'),
-        os.getenv('MYSQL_DATABASE'))
+    print(db_variables)
     conn = mysql.connector.connect(
         host=os.getenv('MYSQLHOST'),
         user=os.getenv('MYSQLUSER'),
