@@ -45,7 +45,6 @@ database=db_variables['MYSQL_DATABASE']"""
 def get_db_connection():
     print(db_variables)
     conn = mysql.connector.connect(
-            
             host=host,
             user=user,
             password=password,
@@ -62,7 +61,7 @@ def add_message(username, content):
     cursor = conn.cursor()
     
     query = """
-    INSERT INTO messages (username, content, date)
+    INSERT INTO message (username, content, date)
     VALUES (%s, %s, %s)
     """
     values = (username, content, message_date)
