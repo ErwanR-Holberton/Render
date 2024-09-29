@@ -18,7 +18,7 @@ def get_db_connection():
         password=os.getenv('MYSQLPASSWORD'),
         database=os.getenv('MYSQL_DATABASE')
     )
-    print(getenv('MYSQLHOST'),
+    print(os.getenv('MYSQLHOST'),
         user=os.getenv('MYSQLUSER'),
         password=os.getenv('MYSQLPASSWORD'),
         database=os.getenv('MYSQL_DATABASE'))
