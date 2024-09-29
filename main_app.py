@@ -59,6 +59,9 @@ def add_message(username, content):
     # Insert the message into the database
     conn = get_db_connection()
     cursor = conn.cursor()
+    sql_query = """ALTER TABLE message CHANGE usename username TEXT;"""
+    cursor.execute(sql_query)
+    conn.commit()
     
     query = """
     INSERT INTO message (username, content, date)
