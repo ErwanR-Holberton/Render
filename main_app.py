@@ -12,7 +12,7 @@ CORS(app)
 app.config['SECRET_KEY'] = 'your_secret_key'
 socketio = SocketIO(app)
 
-mysql_url = os.getenv('MYSQL_URL')
+mysql_url = os.getenv('NEW_URL')
 
 # Parse the MySQL URL
 parsed_url = urlparse(mysql_url)
