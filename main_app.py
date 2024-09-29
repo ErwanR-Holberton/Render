@@ -117,7 +117,7 @@ def show_messages():
     cursor = conn.cursor(dictionary=True)
     
     # Fetch all messages
-    query = "SELECT * FROM messages ORDER BY date DESC"
+    query = "SELECT * FROM message ORDER BY date DESC"
     cursor.execute(query)
     messages = cursor.fetchall()
     
