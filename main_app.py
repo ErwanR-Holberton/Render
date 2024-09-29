@@ -19,8 +19,10 @@ db_variables = {
     'MYSQL_DATABASE': os.getenv('MYSQL_DATABASE'),
     'MYSQL_PUBLIC_URL': os.getenv('MYSQL_PUBLIC_URL'),
     'MYSQL_ROOT_PASSWORD': os.getenv('MYSQL_ROOT_PASSWORD'),
-    'MYSQL_URL': os.getenv('MYSQL_URL')
+    'MYSQL_URL': os.getenv('MYSQL_URL'),
+    'NEW_URL': os.getenv('NEW_URL')
 }
+print("url:", db_variables['NEW_URL'])
 
 def get_db_connection():
     print(db_variables)
